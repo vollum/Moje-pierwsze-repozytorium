@@ -1,3 +1,4 @@
+//6 zmiana
 program rosnacykwadrat;
 uses Crt;
 
