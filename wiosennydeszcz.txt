@@ -1,3 +1,4 @@
+//9 zmiana
 program wiosennydeszczyk;
 uses Crt;
 
@@ -36,3 +37,4 @@ readln();
 
 
 END.
+//9 zmiana

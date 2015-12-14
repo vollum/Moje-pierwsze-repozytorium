@@ -1,3 +1,4 @@
+//2 zmiana
 program jajka;
 uses Crt, Graph;
 
@@ -34,3 +35,4 @@ begin
   Rectangle(kwadrat.posX, kwadrat.posY, kwadrat.posX+20, kwadrat.posY+20);
   readln();
 end.
+//2 zmiana

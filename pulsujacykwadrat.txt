@@ -1,3 +1,4 @@
+//6 zmiana
 program rosnacykwadrat;
 uses Crt;
 
@@ -64,3 +65,4 @@ readln();
 
 
 END.
+//6 zmiana

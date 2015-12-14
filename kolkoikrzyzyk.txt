@@ -1,3 +1,4 @@
+//4 zmiana
 //opcja "jeszcze raz" nie dziala dla (t/n) tylko dla (1) - cos pokombinowac z getchar ?
 //przy powtorce nie mozna na nowo wybrac X lub O, bo nie wczytuje drugi raz funkcji 'wyborgracza'
 
@@ -186,3 +187,4 @@ if (a==1 || b==1 || c==1 || d==1 || e==1 || f==1 || g==1)
 //kończy gre
 
 */
+//4 zmiana

@@ -1,3 +1,4 @@
+//10 zmiana
 program dowolny;
 
 uses SysUtils;
@@ -72,3 +73,4 @@ else
   end;
 readln();
 end.
+//10 zmiana

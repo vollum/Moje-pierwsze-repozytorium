@@ -1,3 +1,4 @@
+//7 zmiana
 program sortowanie;
 const
 SIZE = 15;
@@ -78,3 +79,4 @@ for i:= 1 to SIZE do
 
 readln();
 END.
+//7 zmiana
