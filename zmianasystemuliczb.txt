@@ -1,3 +1,4 @@
+//10 zmiana
 program dowolny;
 
 uses SysUtils;
