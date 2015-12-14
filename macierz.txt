@@ -1,3 +1,4 @@
+//5 zmiana
 #include <stdio.h>
 #define COLS 3
 
