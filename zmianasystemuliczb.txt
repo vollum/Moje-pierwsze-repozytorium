@@ -1,0 +1,74 @@
+program dowolny;
+
+uses SysUtils;
+
+const
+pattern : string = '0123456789ABCDEF';
+
+function convertTo(liczba : integer; base : integer) : string;
+
+begin
+result := '';
+repeat
+      result := pattern[(liczba mod base) +1] + result;
+      liczba := liczba div base;
+until liczba = 0;
+end;
+
+function valueOf(x : char; base : integer) : integer;
+
+var
+i : integer;
+
+begin
+for i:=1 to base do
+    begin
+    if x = pattern[i] then
+       begin
+       result := i - 1;
+       break;
+       end;
+    end;
+end;
+
+
+function convertFrom(liczba : string; base: integer):integer;
+
+var
+x, i, p : integer;
+
+begin
+result := 0;
+p:= 1;
+liczba := UpperCase(liczba);
+for i:=length(liczba) downto 1 do
+    begin
+    x := valueOf(liczba[i], base);
+    result := result + (x * p);
+    p := p*base;
+    end;
+end;
+
+var
+liczba_s : string;
+baza_z, baza_do : integer;
+
+BEGIN
+write('Podaj liczbe: ');
+readln(liczba_s);
+write('W systemie: ');
+readln(baza_z);
+write('Na jaki system: ');
+readln(baza_do);
+if baza_z = 10 then
+   begin
+   writeln(convertTo(StrToInt(liczba_s), baza_do));
+   readln;
+   exit;
+   end
+else
+  begin
+  writeln(convertTo((convertFrom(liczba_s, baza_z)), baza_do));
+  end;
+readln();
+end.

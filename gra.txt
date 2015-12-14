@@ -1,0 +1,36 @@
+program jajka;
+uses Crt, Graph;
+
+var ster, tryb : SmallInt;
+
+type
+pozycja = record
+    posX:integer;
+    posY:integer;
+    del:integer;
+        pr:integer;
+end;
+
+var
+kolo, kwadrat, info : pozycja;
+hp : integer;
+
+begin
+
+  ster:=VGA;  tryb:=VGAHi;
+  InitGraph(ster, tryb, 'C:\Programy\Pascal\BP\BGI' );
+  info.posX := 20;
+  info.posY := 460;
+  kwadrat.posX := 40;
+  kwadrat.posY := 60;
+  hp := 2;
+  SetFillStyle(SolidFill,15); FloodFill(450,110,SolidFill);
+  case hp of
+  2: OutTextXY(info.posX, info.posY, 'Zycie = 2');
+  1: OutTextXY(info.posX, info.posY, 'Zycie = 1');
+  0: OutTextXY(270, 220, 'GAME OVER');
+  end;
+
+  Rectangle(kwadrat.posX, kwadrat.posY, kwadrat.posX+20, kwadrat.posY+20);
+  readln();
+end.

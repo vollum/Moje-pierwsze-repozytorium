@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main (void)
+
+{
+    int a; /* miesiac */
+    int b = 4; /* dzien tygodnia */
+    int c;
+    int d = 1;
+    printf("Podaj numer miesiaca: ");
+    scanf("%d", &a);
+    printf("\n");
+    printf("Podaj pierwszy dzien tego miesiaca: ");
+    scanf("%d", &b);
+    printf("\n");
+    if (a = 1)
+{
+    printf("Miesiac %d\n", a);
+    printf("Ni  Po  Wt  Sr  Cz  Pt  So\n");
+    for (c=1; c<=b; ++c)
+{
+    printf("    ");
+}
+    
+    for(d=1; d<=7-b ; ++d)
+{
+    printf("%2d  ", d);
+} 
+    printf("\n");
+}
+    return 0;
+}     

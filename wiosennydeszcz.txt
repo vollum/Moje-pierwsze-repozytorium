@@ -1,0 +1,38 @@
+program wiosennydeszczyk;
+uses Crt;
+
+var
+i, rand, j: integer;
+wiersz : array[1..7] of integer;
+
+
+BEGIN
+randomize;
+repeat
+rand := 1 + random(11);
+for j:= 1 to 7 do
+    begin
+    for i:=1 to 11 do
+        begin
+        if i = wiersz[j] then
+           begin
+           write('X ');
+           continue;
+           end
+        else
+            write('O ');
+        end;
+    writeln();
+    end;
+Delay(650);
+ClrScr;
+for j:=7 downto 1 do
+    if j = 1 then
+       wiersz[j] := rand
+    else
+        wiersz[j] := wiersz[j-1];
+until KeyPressed;
+readln();
+
+
+END.

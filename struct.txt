@@ -1,0 +1,78 @@
+program dynamicznestruktuy;
+uses Crt;
+
+type
+listPtr = ^list;
+list = record
+imie : string;
+nazwisko : string;
+punkty : integer;
+next : listPtr;
+end;
+
+procedure insert_front(var tmp : listPtr; var poczatek : listPtr);
+begin
+new(tmp);
+write('Podaj imie: ');
+readln(tmp^.imie);
+write('Podaj nazwisko: ');
+readln(tmp^.nazwisko);
+write('Podaj liczbe punktow: ');
+readln(tmp^.punkty);
+tmp^.next := poczatek;
+poczatek := tmp;
+end;
+
+procedure insert_back(var tmp : listPtr; var poczatek : listPtr);
+begin
+while tmp <> nil do
+tmp := tmp^.next;
+new(tmp);
+write('Podaj imie: ');
+readln(tmp^.imie);
+write('Podaj nazwisko: ');
+readln(tmp^.nazwisko);
+write('Podaj liczbe punktow: ');
+readln(tmp^.punkty);
+tmp^.next := poczatek;
+poczatek := tmp;
+end;
+
+procedure print(tmp : listPtr);
+begin
+while tmp <> nil do
+  begin
+  writeln(tmp^.imie, ' ', tmp^.nazwisko, ' liczba punktow: ', tmp^.punkty);
+  tmp := tmp^.next;
+  end;
+end;
+
+
+
+var
+poczatek, tmp : listPtr;
+i, liczba_osob : integer;
+
+begin
+poczatek := nil;
+
+write('Podaj liczbe osob: ');
+readln(liczba_osob);
+for i:=1 to liczba_osob do
+     begin
+     clrscr;
+     writeln('Osoba nr ', i);
+     insert_front(tmp, poczatek);
+     end;
+print(tmp);
+clrscr;
+insert_back(tmp, poczatek);
+clrscr;
+print(tmp);
+insert_back(tmp, poczatek);
+clrscr;
+print(tmp);
+
+
+readln();
+end.

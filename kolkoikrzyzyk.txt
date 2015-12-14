@@ -1,0 +1,188 @@
+//opcja "jeszcze raz" nie dziala dla (t/n) tylko dla (1) - cos pokombinowac z getchar ?
+//przy powtorce nie mozna na nowo wybrac X lub O, bo nie wczytuje drugi raz funkcji 'wyborgracza'
+
+
+#include <stdio.h>
+int tab[9] = {'-', '-', '-', '-', '-', '-', '-', '-', '-', };
+void plansza(int i)
+{
+    for (i=0; i<9; i+=3)
+    {
+        printf("| %c | %c | %c |\n", tab[i], tab[i+1], tab[i+2]);
+        if (i<6)
+        {
+            printf("--------------\n");
+        }
+    }
+}
+
+int wyborgracza (int numer)
+{
+    char znak;
+        znak:
+        printf("Wybierz kółko lub krzyżyk (X/O): ");
+        scanf("%c", &znak);
+        switch(znak) //jesli dziala dla charów
+        {
+          case 'X': numer=2; break;
+          case 'O': numer=1; break;
+        }
+    return numer;
+}
+
+void wczytaj(int numerTablicy, int numer_Gracza)
+{
+    
+    printf("Wybierz pole (od 1 do 9): ");
+    wybierzpole:    
+    scanf("%d", &numerTablicy);
+    if (tab[numerTablicy-1]=='-')
+    {
+        if (numerTablicy >= 1 && numerTablicy <= 9)
+        {
+            if (numer_Gracza == 1)
+            tab[numerTablicy-1] = 'O';
+            else
+            tab[numerTablicy-1] = 'X';
+        }
+        else
+        {
+            printf("Niepoprawna wartosc, sprobuj jeszcze raz: ");
+            goto wybierzpole;
+        }
+    }
+    else
+    {
+        printf("Pole juz zajete, sprobuj jeszcze raz: ");
+        goto wybierzpole;
+    }
+}
+
+int main(void)
+{
+    int i;
+    int pytanie;
+    int a, b, c, d, e, f, g, h, numer_Gracza;    
+    numer_Gracza=wyborgracza(0);
+    poczatek:
+    a = b = c = d= e = f = g = h = i = 0;
+    do
+    {
+        plansza(0);
+        wczytaj(0, numer_Gracza);
+        if (tab[0] == 'X' || tab[0] == 'O')
+        {
+            if (tab[0] == tab[1] && tab[0] == tab[2] && tab[1] == tab[2])
+            a=1;
+            if (tab[0] == tab[3] && tab[0] == tab[6] && tab[3] == tab[6])
+            d=1;            
+        }
+        if (tab[1] == 'X' || tab[1] == 'O')
+        {
+            if (tab[1] == tab[4] && tab[1] == tab[7] && tab[4] == tab[7])
+            e=1;
+        }
+        if (tab[2] == 'X' || tab[2] == 'O')
+        {
+            if (tab[2] == tab[5] && tab[2] == tab[8] && tab[5] == tab[8])
+            f=1;
+        }
+        if (tab[3] == 'X' || tab[3] == 'O')
+        {
+            if (tab[3] == tab[4] && tab[3] == tab[5] && tab[4] == tab[5])
+            b=1;
+        }
+        if (tab[4] == 'X' || tab[4] == 'O')
+        {
+            if (tab[0] == tab[4] && tab[0] == tab[8] && tab[4] == tab[8])
+            g=1;
+        }
+        if (tab[6] == 'X' || tab[6] == 'O')
+        {
+            if (tab[6] == tab[7] && tab[6] == tab[8] && tab[7] == tab[8])
+            f=1;
+        }
+        
+        if (a==1 || b==1 || c==1 || d==1 || e==1 || f==1 || g==1)
+        h = 1;
+        if (h!=1)
+        {
+            if (numer_Gracza == 1)
+            ++numer_Gracza;
+            else
+            --numer_Gracza;
+        }
+    }
+    while (h!=1);
+    plansza(0);
+    printf("Mecz skonczony, Gracz: %d wygral\n Jeszcze raz?(type: 1): ", numer_Gracza);
+    scanf("%d", &pytanie);
+    if (pytanie == 1)
+    {
+        while (i<8)
+        {
+            tab [i] = '-';
+            ++i;
+        }        
+        printf("\n");
+        goto poczatek;
+    }
+    return(0);
+}
+
+
+/*
+if (tab[0] == tab[1] && tab[0] == tab[2] && tab[1] == tab[2])
+a=1;
+if (tab[3] == tab[4] && tab[3] == tab[5] && tab[4] == tab[5])
+b=1;
+if (tab[6] == tab[7] && tab[6] == tab[8] && tab[7] == tab[8])
+c=1;
+if (tab[0] == tab[3] && tab[0] == tab[6] && tab[3] == tab[6])
+d=1;
+if (tab[1] == tab[4] && tab[1] == tab[7] && tab[4] == tab[7])
+e=1;
+if (tab[2] == tab[5] && tab[2] == tab[8] && tab[5] == tab[8])
+f=1;
+if (tab[0] == tab[4] && tab[0] == tab[8] && tab[4] == tab[8])
+g=1;
+
+
+
+//sprawdza warunki, gdy jedna z wartosci rowna jest X lub O
+if (tab[0] == 'X' || tab[0] == 'O')
+{
+    if (tab[0] == tab[1] && tab[0] == tab[2] && tab[1] == tab[2])
+    a=1;
+    if (tab[0] == tab[3] && tab[0] == tab[6] && tab[3] == tab[6])
+    d=1;
+    if (tab[0] == tab[4] && tab[0] == tab[8] && tab[4] == tab[8])
+    g=1;        
+}
+if (tab[1] == 'X' || tab[1] == 'O')
+{
+    if (tab[1] == tab[4] && tab[1] == tab[7] && tab[4] == tab[7])
+    e=1;
+}
+if (tab[2] == 'X' || tab[2] == 'O')
+{
+    if (tab[2] == tab[5] && tab[2] == tab[8] && tab[5] == tab[8])
+    f=1;
+}
+if (tab[3] == 'X' || tab[2] == 'O')
+{
+    if (tab[3] == tab[4] && tab[3] == tab[5] && tab[4] == tab[5])
+    b=1;
+}
+if (tab[6] == 'X' || tab[2] == 'O')
+{
+    if (tab[6] == tab[7] && tab[6] == tab[8] && tab[7] == tab[8])
+    f=1;
+}
+I POWINNO HULAĆ
+
+//SPRAWDZA KONIEC
+if (a==1 || b==1 || c==1 || d==1 || e==1 || f==1 || g==1)
+//kończy gre
+
+*/

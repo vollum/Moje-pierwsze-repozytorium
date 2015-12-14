@@ -1,0 +1,80 @@
+program sortowanie;
+const
+SIZE = 15;
+
+type tab = array[1..SIZE] of integer;
+
+procedure swap(var tablica : tab; i : integer; j: integer);
+var
+tmp : integer;
+begin
+tmp := tablica[i];
+tablica[i] := tablica[j];
+tablica[j] := tmp;
+end;
+
+function min(tablica : tab):integer;
+var
+tmp, i : integer;
+begin
+tmp := tablica[1];
+for i:=1 to SIZE do
+    begin
+    if tmp > tablica[i] then
+    tmp := tablica[i];
+    end;
+result:=i;   //zwraca numer tablicy o minimalnej wartosci
+end;
+function max(tablica : tab):integer;
+var
+tmp, i : integer;
+begin
+tmp := tablica[1];
+for i:=1 to SIZE do
+    begin
+    if tmp < tablica[i] then
+    tmp := tablica[i];
+    end;
+result:=tmp;
+end;
+
+procedure sort_wybieranie(var tablica : tab); //usunąć var - brak zmiany wart. tab. wej.
+var
+tmp, i, j : integer;
+begin
+for i:=i to SIZE do
+    begin
+    swap(tablica, i, min(tablica));
+    end;
+
+end;
+
+
+var
+
+i, rand : integer;
+tablica : tab;
+
+
+BEGIN
+randomize;
+
+for i:= 1 to SIZE do
+    begin
+    rand := random(50)+1;
+    tablica[i] := rand;
+    end;
+for i:= 1 to SIZE do
+    write(tablica[i], ' | ');
+writeln();
+
+{swap(tablica, 1, 3);
+for i:= 1 to SIZE do
+    write(tablica[i], ' | ');}
+
+//writeln('Najmniejsza wartosc tablicy: ', min(tablica));
+//writeln('Najwieksza wartosc tablicy: ', max(tablica));
+
+
+readln();
+END.

@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <time.h>
+#define ROZMIAR 100
+
+int main()
+{
+int i, dlugosc;
+char bufor[ROZMIAR];
+FILE *plik;
+plik = fopen("polski.txt", "r");    //w - do pisania; r - do czytania; a - do uzupelniania
+if (plik == NULL)
+    {
+    printf("Nie znaleziono pliku\n");
+    return 1;
+    }
+/* fscanf(plik, "%99s", bufor        -czyta znaki do pierwszego białego znaku - %99s - czyta max 99 znakow
+   fgets(bufor, ROZMIAR, plik)          -pierwszy argument oznacza adres pierwszego elementu tablicy
+                     drugi - max liczbe wczytanych znakow (99 + znak końca linii)
+                     trzeci - czytany plik
+                     fgets czyta z bialymi znakami do konca linii
+  fgetc                    -czyta po jednym znaku
+  fseek                    -ustawia pozycje z której czytane są znaki
+  ftell
+  feof                    -sygnalizuje koniec pliku (END OF FILE)
+*/
+for (i=0; i<=10; ++i)
+    {
+    fscanf(plik, "%99s", bufor);
+    dlugosc = strlen
+    puts(bufor);
+    }
+return 0;
+}
