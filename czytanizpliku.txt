@@ -1,3 +1,4 @@
+//1 zmiana
 #include <stdio.h>
 #include <time.h>
 #define ROZMIAR 100
