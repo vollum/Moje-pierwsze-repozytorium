@@ -1,3 +1,4 @@
+//4 zmiana
 //opcja "jeszcze raz" nie dziala dla (t/n) tylko dla (1) - cos pokombinowac z getchar ?
 //przy powtorce nie mozna na nowo wybrac X lub O, bo nie wczytuje drugi raz funkcji 'wyborgracza'
 
